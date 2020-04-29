@@ -9,4 +9,4 @@ ofdm.slx : Script Simulink contenant les blocs fonctionnels de la modulation
 ```
 ## Utilisation
 1. Ouvrir avec Matlab, modifier si besoin et exécuter `Config.m`
-2. Ouvrir avec Simulink et exécuter `ofdm.m`
+2. Ouvrir avec Simulink et exécuter `ofdm.slx`
