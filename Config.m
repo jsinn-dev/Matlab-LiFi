@@ -1,16 +1,11 @@
-%% A MODIFIER
-% Mode
-% k = 1,2,4,8,16,32,64
+%% %%%%%%%%% A MODIFIER %%%%%%%%%
+% Espacement des sous-porteuses
+% k = 1,2,4,8,16,32,64; F_SC=k*24.4140625 kHz
 k = 8; %LC Optimized mode
 
 % Nombre de sous-porteuses
 % N = 256,1024,2048,4096
 N = 256;
-
-% Taux d'échantillonnage (F_péchantillonnage/F_max)
-% R > 2
-R = 8;
-R = max(R,2);
 
 % Atténuation du signal de sortie
 % Echelle linéaire
@@ -24,16 +19,22 @@ code_rate = '1/2';
 % K = 960, 4320
 K = 960;
 
-%% NE PAS MODIFIER
+
+%% GENERAL %%%% NE PAS MODIFIER
 % Espacement des sous-porteuses (Hz)
 F_SC = 24414.0625*k;
 
 % Bande passante (Hz)
 BW = F_SC*N;
 
+%% CYCLIC PREFIX %%%% NE PAS MODIFIER
+N_CP = N/4; 
+
+%% FREQUENCY UP-SHIFT %%%% NE PAS MODIFIER
 % Frequency up-shift (Hz)
 F_US = BW/2;
 
+%% LDPC ENCODER %%%% NE PAS MODIFIER
 % Parity-check matrices
 H_1_2_H = [
     -1 -1 -1  6 -1 -1  9  6 -1 -1  2 -1 -1  0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1;

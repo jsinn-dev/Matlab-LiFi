@@ -13,11 +13,11 @@ ofdm.slx : Script Simulink contenant les blocs fonctionnels de la modulation
 2. Ouvrir avec Simulink et exécuter `ofdm.slx`
 
 ## Captures d'écran
-|![Fichier `ofdm.slx`](https://puu.sh/FGwZj/15b6f1a95a.png)|
+|![Fichier `ofdm.slx`](https://puu.sh/FGDhg/20dbbf509d.png)|
 |:--:|
 |*Fichier `ofdm.slx`*|
 
-|![Signal de sortie `RF_IN`](https://puu.sh/FGx1J/25c4779169.png)|
+|![Signal de sortie `RF_IN`](https://puu.sh/FGDgx/2601fa3a03.png)|
 |:--:|
 |*Signal de sortie `RF_IN`*|
 
