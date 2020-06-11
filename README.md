@@ -5,12 +5,12 @@ Ce code Matlab / Simulink implémente une modulation QAM DCO-OFDM selon les spé
 ## Fichiers
 ```
 Config.m : Script Matlab contenant la configuration de la modulation (nombre de porteuses, espacement...)
-ofdm.slx : Script Simulink contenant les blocs fonctionnels de la modulation
+Systeme.slx : Script Simulink contenant les blocs fonctionnels de la modulation
 ```
 
 ## Utilisation
 1. Ouvrir avec Matlab, modifier si besoin et exécuter `Config.m`
-2. Ouvrir avec Simulink et exécuter `ofdm.slx`
+2. Ouvrir avec Simulink et exécuter `Systeme.slx`
 
 ## Captures d'écran
 |![Fichier `ofdm.slx`](https://puu.sh/FNPpU/93f28702d7.png)|
