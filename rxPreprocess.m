@@ -1,9 +1,23 @@
 %% Read received file from oscilloscope
-RX = TX;
+Rx = Tx;
+
 %% Find and compensate for the delay between TX and RX
-delay = 10;
-shiftedData = RX.Data(:,:,delay+1:length(TX.Data));
-shiftedTime = RX.Time(delay+1:length(TX.Time),:);
-RX = timeseries(shiftedData, shiftedTime);
-%% Resample the signal to match the TX sampling rate
-RX = resample(RX,TX.Time);
+% Upsample the TX data to match RX sampling rate
+TxUpsampled = resample(Tx,Rx.Time);
+
+% Retrieve preamble from TX data
+PreambleIndices = find(TxUpsampled.Time<SimDuration/NbOFDMSymbols);
+Preamble = timeseries(TxUpsampled.Data(PreambleIndices),TxUpsampled.Time(PreambleIndices));
+
+% Find delay between TX and RX using correlation
+u(:) = Preamble.Data(1,1,:);
+v(:) = Rx.Data(1,1,:);
+delay = abs(finddelay(u, v));
+
+% Compensate for the delay by shifting RX signal
+shiftedRxData = Rx.Data(:,:,delay+1:length(Rx.Data));
+shiftedRxTime = Rx.Time(delay+1:length(Rx.Time),:);
+Rx = timeseries(shiftedRxData, shiftedRxTime);
+
+%% Resample the RX data to match the original TX sampling rate
+Rx = resample(Rx,Tx.Time);
