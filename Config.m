@@ -1,11 +1,15 @@
 %% %%%%%%%%% A MODIFIER %%%%%%%%%
-%Information block size
+% Information block size
 % K = 960, 4320
 K = 960;
 
 % Code rate
 % code_rate = '1/2','2/3','5/6'
 code_rate = '1/2';
+
+% Taille de constellation M-QAM
+% M = 4, 16, 64, 256, 1024
+M = 64;
 
 % Espacement des sous-porteuses
 % k = 1,2,4,8,16,32,64; F_SC=k*24.4140625 kHz
@@ -17,7 +21,13 @@ N = 256;
 
 % Atténuation du signal de sortie
 % Echelle linéaire
-A = 10;
+A = 40;
+
+% Paramètres de simulation
+SimSampleTime = 1/(log2(M)*BW);
+NbOFDMSymbols = 2;
+NbBitsToSend = NbOFDMSymbols*(N*log2(M)+N/4);
+SimDuration = NbBitsToSend*SimSampleTime;
 
 %% GENERAL %%%% NE PAS MODIFIER
 % Espacement des sous-porteuses (Hz)
@@ -27,7 +37,12 @@ F_SC = 24414.0625*k;
 BW = F_SC*N;
 
 % Facteur de surechantillonnage
-R = 4;
+R = 10;
+
+%% PREAMBULE %%%% NE PAS MODIFIER
+BarkerCode = [1,1,1,1,1,-1,-1,1,1,-1,1,-1,1];
+BarkerLength = 13;
+PreambleDetectorThreshold = 20;
 
 %% CYCLIC PREFIX %%%% NE PAS MODIFIER
 N_CP = N/4; 
@@ -70,8 +85,8 @@ end
 
 % Parity-check matrix expansion
 [c, t] = size(Hc); % Get number of rows and columns
-M = N_FEC/t; % Expansion factor
-H = matExpand(Hc, M);
+ExpansionFactor = N_FEC/t; % Expansion factor
+H = matExpand(Hc, ExpansionFactor);
 
 
 
