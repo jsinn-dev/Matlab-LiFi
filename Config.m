@@ -9,7 +9,7 @@ code_rate = '1/2';
 
 % Taille de constellation M-QAM
 % M = 4, 16, 64, 256, 1024
-M = 16;
+M = 4;
 
 % Espacement des sous-porteuses
 % k = 1,2,4,8,16,32,64; F_SC=k*24.4140625 kHz
@@ -34,7 +34,7 @@ A = 50;
 
 % Paramètres de simulation
 SimSampleTime = 1/(log2(M)*BW);
-NbOFDMSymbols = 2;
+NbOFDMSymbols = 3;
 NbBitsToSend = NbOFDMSymbols*(N*log2(M)+N/4);
 SimDuration = NbBitsToSend*SimSampleTime;
 %% PREAMBULE %%%% NE PAS MODIFIER

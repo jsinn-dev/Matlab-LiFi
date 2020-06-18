@@ -34,7 +34,7 @@ xlabel('time (s)');
 
 % Retrieve preamble from TX data
 PreambleIndices = find(TxUpsampled.Time<SimDuration/NbOFDMSymbols);
-Preamble = timeseries(TxUpsampled.Data(PreambleIndices),TxUpsampled.Time(PreambleIndices));
+Preamble = timeseries(TxUpsampled.Data(1:3200),TxUpsampled.Time(1:3200));
 
 subplot(614);
 plot(Preamble.Time, reshape(Preamble.Data(1,1,:),[1 length(Preamble.Data)]));
