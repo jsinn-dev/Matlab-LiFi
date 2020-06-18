@@ -1,7 +1,7 @@
 %% Modifiy Tx and Rx data for test purposes
-RxData = [zeros(1,213) reshape(Tx.Data(1,1,:),[1 length(Tx.Data)])];
-timepad = linspace(0,Tx.Time(213,1),213);
-RxTime = [timepad reshape(Tx.Time+Tx.Time(213,1),[1 length(Tx.Time)])];
+RxData = [zeros(1,213) reshape(Rx.Data(1,1,:),[1 length(Rx.Data)])];
+timepad = linspace(0,Rx.Time(213,1),213);
+RxTime = [timepad reshape(Rx.Time+Rx.Time(213,1),[1 length(Rx.Time)])];
 Rx = timeseries(RxData, RxTime);
 
 TxDataDownsampled(:) = downsample(Tx.Data(1,1,:),2);

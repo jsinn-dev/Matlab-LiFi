@@ -9,7 +9,7 @@ code_rate = '1/2';
 
 % Taille de constellation M-QAM
 % M = 4, 16, 64, 256, 1024
-M = 64;
+M = 16;
 
 % Espacement des sous-porteuses
 % k = 1,2,4,8,16,32,64; F_SC=k*24.4140625 kHz
@@ -30,7 +30,7 @@ R = 10;
 
 % Atténuation du signal de sortie
 % Echelle linéaire
-A = 40;
+A = 50;
 
 % Paramètres de simulation
 SimSampleTime = 1/(log2(M)*BW);
