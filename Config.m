@@ -19,17 +19,6 @@ k = 8; %LC Optimized mode
 % N = 256,1024,2048,4096
 N = 256;
 
-% Atténuation du signal de sortie
-% Echelle linéaire
-A = 40;
-
-% Paramètres de simulation
-SimSampleTime = 1/(log2(M)*BW);
-NbOFDMSymbols = 2;
-NbBitsToSend = NbOFDMSymbols*(N*log2(M)+N/4);
-SimDuration = NbBitsToSend*SimSampleTime;
-
-%% GENERAL %%%% NE PAS MODIFIER
 % Espacement des sous-porteuses (Hz)
 F_SC = 24414.0625*k;
 
@@ -39,6 +28,15 @@ BW = F_SC*N;
 % Facteur de surechantillonnage
 R = 10;
 
+% Atténuation du signal de sortie
+% Echelle linéaire
+A = 40;
+
+% Paramètres de simulation
+SimSampleTime = 1/(log2(M)*BW);
+NbOFDMSymbols = 2;
+NbBitsToSend = NbOFDMSymbols*(N*log2(M)+N/4);
+SimDuration = NbBitsToSend*SimSampleTime;
 %% PREAMBULE %%%% NE PAS MODIFIER
 BarkerCode = [1,1,1,1,1,-1,-1,1,1,-1,1,-1,1];
 BarkerLength = 13;
